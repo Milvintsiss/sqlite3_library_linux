@@ -4,11 +4,11 @@ import 'dart:ffi';
 
 import 'package:flutter/foundation.dart';
 
-///relative path to SQLite3 library when debuging
+///relative path to SQLite3 library file when debuging
 const sqlite3_linux_debug_libraryPath =
     'build/flutter_assets/packages/sqlite3_library_linux/libsqlite3.so';
 
-///relative path in release bundle to SQLite3 library
+///relative path in release bundle to SQLite3 library file
 const sqlite3_linux_release_libraryPath =
     'data/flutter_assets/packages/sqlite3_library_linux/libsqlite3.so';
 
