@@ -15,5 +15,5 @@ dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - default/libsqlite3.so
-    - old/libsqlite3.so
+    - default_libsqlite3.so
+    - old_libsqlite3.so
