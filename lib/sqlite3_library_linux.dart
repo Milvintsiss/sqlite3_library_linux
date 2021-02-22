@@ -1,16 +1,24 @@
 library sqlite3_library_linux;
 
 import 'dart:ffi' show DynamicLibrary;
-import 'dart:io' show File;
+import 'dart:io' show File, Platform;
 import 'package:flutter/foundation.dart' show kDebugMode;
 
-///relative path to SQLite3 library file when debuging
-const sqlite3_linux_debug_libraryPath =
-    'build/flutter_assets/packages/sqlite3_library_linux/libsqlite3.so';
+///relative path to default SQLite3 library file when debuging
+const default_sqlite3_linux_debug_libraryPath =
+    '/build/flutter_assets/packages/sqlite3_library_linux/default/libsqlite3.so';
 
-///relative path in release bundle to SQLite3 library file
-const sqlite3_linux_release_libraryPath =
-    'data/flutter_assets/packages/sqlite3_library_linux/libsqlite3.so';
+///relative path in release bundle to default SQLite3 library file
+const default_sqlite3_linux_release_libraryPath =
+    '/data/flutter_assets/packages/sqlite3_library_linux/default/libsqlite3.so';
+
+///relative path to debian SQLite3 library file when debuging
+const debian_sqlite3_linux_debug_libraryPath =
+    '/build/flutter_assets/packages/sqlite3_library_linux/debian/libsqlite3.so';
+
+///relative path in release bundle to debian SQLite3 library file
+const debian_sqlite3_linux_release_libraryPath =
+    '/data/flutter_assets/packages/sqlite3_library_linux/debian/libsqlite3.so';
 
 ///This function open SQLite3 in memory and return the associated DynamicLibrary
 ///object.
@@ -19,7 +27,9 @@ const sqlite3_linux_release_libraryPath =
 DynamicLibrary openSQLiteOnLinux() {
   DynamicLibrary library;
   try {
-    library = DynamicLibrary.open(getSQLiteLibraryPathOnLinux());
+    String sqliteLibraryPath = getSQLiteLibraryPathOnLinux();
+    print('SQLite3LibraryPath: $sqliteLibraryPath');
+    library = DynamicLibrary.open(sqliteLibraryPath);
 
     print(_yellow("SQLite3 successfully loaded"));
   } catch (e) {
@@ -39,23 +49,33 @@ DynamicLibrary openSQLiteOnLinux() {
   return library;
 }
 
-///return path of SQLite3 library file
+///return absolute path of SQLite3 library file
 String getSQLiteLibraryPathOnLinux() {
   String linuxDistribution = getLinuxDistribution();
   print('Linux distribution: $linuxDistribution');
 
+  String executableDirectoryPath =
+      File(Platform.resolvedExecutable).parent.path;
+  print('executableDirectoryPath: $executableDirectoryPath');
   switch (linuxDistribution) {
     case 'ubuntu':
-      return defaultSQLite3library();
+      return executableDirectoryPath + defaultSQLite3library();
+      break;
+    case 'debian':
+      return executableDirectoryPath + debianSQLite3library();
       break;
     default:
-      return defaultSQLite3library();
+      return executableDirectoryPath + defaultSQLite3library();
   }
 }
 
 String defaultSQLite3library() => kDebugMode
-    ? sqlite3_linux_debug_libraryPath
-    : sqlite3_linux_release_libraryPath;
+    ? default_sqlite3_linux_debug_libraryPath
+    : default_sqlite3_linux_release_libraryPath;
+
+String debianSQLite3library() => kDebugMode
+    ? debian_sqlite3_linux_debug_libraryPath
+    : debian_sqlite3_linux_release_libraryPath;
 
 String getLinuxDistribution() {
   String linuxDistribution;

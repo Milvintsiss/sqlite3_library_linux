@@ -15,4 +15,5 @@ dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - libsqlite3.so
+    - default/libsqlite3.so
+    - debian/libsqlite3.so
