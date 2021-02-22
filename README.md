@@ -27,12 +27,4 @@ Add an override for linux and give it the `openSQLiteOnLinux` function provided 
 	  runApp(MyApp());
     }
 
-And... that's it! No need to provide your own sqlite3.so file🙂
-
-
-## I want to handle the SQLite3 library myself
-
-No problem! You can use `getSQLiteLibraryPathOnLinux()` function to 
-find the relative path of the SQLite3 library file.
-If you want the absolute path you can do something like this 
-`File(getSQLiteLibraryPathOnLinux()).absolute.path`
+And... that's it! No need to provide your own libsqlite3.so file🙂
