@@ -2,22 +2,13 @@ library sqlite3_library_linux;
 
 import 'dart:ffi' show DynamicLibrary;
 import 'dart:io' show File, Platform;
-import 'package:flutter/foundation.dart' show kDebugMode;
 
-///relative path to default SQLite3 library file when debuging
-const default_sqlite3_linux_debug_libraryPath =
-    '/build/flutter_assets/packages/sqlite3_library_linux/default/libsqlite3.so';
-
-///relative path in release bundle to default SQLite3 library file
-const default_sqlite3_linux_release_libraryPath =
+///relative path to default SQLite3 library file
+const default_sqlite3_linux_libraryPath =
     '/data/flutter_assets/packages/sqlite3_library_linux/default/libsqlite3.so';
 
-///relative path to debian SQLite3 library file when debuging
-const debian_sqlite3_linux_debug_libraryPath =
-    '/build/flutter_assets/packages/sqlite3_library_linux/debian/libsqlite3.so';
-
-///relative path in release bundle to debian SQLite3 library file
-const debian_sqlite3_linux_release_libraryPath =
+///relative path to debian SQLite3 library file
+const debian_sqlite3_linux_libraryPath =
     '/data/flutter_assets/packages/sqlite3_library_linux/debian/libsqlite3.so';
 
 ///This function open SQLite3 in memory and return the associated DynamicLibrary
@@ -59,23 +50,15 @@ String getSQLiteLibraryPathOnLinux() {
   print('executableDirectoryPath: $executableDirectoryPath');
   switch (linuxDistribution) {
     case 'ubuntu':
-      return executableDirectoryPath + defaultSQLite3library();
+      return executableDirectoryPath + debian_sqlite3_linux_libraryPath;
       break;
     case 'debian':
-      return executableDirectoryPath + debianSQLite3library();
+      return executableDirectoryPath + debian_sqlite3_linux_libraryPath;
       break;
     default:
-      return executableDirectoryPath + defaultSQLite3library();
+      return executableDirectoryPath + debian_sqlite3_linux_libraryPath;
   }
 }
-
-String defaultSQLite3library() => kDebugMode
-    ? default_sqlite3_linux_debug_libraryPath
-    : default_sqlite3_linux_release_libraryPath;
-
-String debianSQLite3library() => kDebugMode
-    ? debian_sqlite3_linux_debug_libraryPath
-    : debian_sqlite3_linux_release_libraryPath;
 
 String getLinuxDistribution() {
   String linuxDistribution;
