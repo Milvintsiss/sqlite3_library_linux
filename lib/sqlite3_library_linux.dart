@@ -11,10 +11,10 @@ const default_sqlite3_linux_libraryPath =
 const old_sqlite3_linux_libraryPath =
     '/data/flutter_assets/packages/sqlite3_library_linux/old_libsqlite3.so';
 
-///This function open SQLite3 in memory and return the associated DynamicLibrary
-///object.
-DynamicLibrary openSQLiteOnLinux() {
-  DynamicLibrary library;
+///This function open SQLite3 in memory and return the associated DynamicLibrary.
+///Return null if app fail to open SQLite3.
+DynamicLibrary? openSQLiteOnLinux() {
+  DynamicLibrary? library;
 
   String executableDirectoryPath =
       File(Platform.resolvedExecutable).parent.path;

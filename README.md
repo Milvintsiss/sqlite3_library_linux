@@ -28,3 +28,6 @@ Add an override for linux and give it the `openSQLiteOnLinux` function provided 
     }
 
 And... that's it! No need to provide your own libsqlite3.so file🙂
+
+>For the moment the package does not provide support for arm64 architectures, if you need it feel
+> free to do a pull request!
