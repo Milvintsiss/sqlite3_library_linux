@@ -48,6 +48,8 @@ void main() {
 }
 ```
 
->For the moment the package does not provide support for arm64 architectures, if you need it feel free to do a pull request!
+### Contributing
 
->The package as been tested for Ubuntu 20.04 and Debian 10, it should work on others distributions too but if you have any issue using the package please [report](https://github.com/Milvintsiss/sqlite3_library_linux/issues) it.
+**For the moment the package does not provide support for arm64 architectures, if you need it feel free to do a pull request!**
+
+*The package as been tested for Ubuntu 20.04 and Debian 10, it should work on others distributions too, but if you have any issue using the package please [report](https://github.com/Milvintsiss/sqlite3_library_linux/issues) it.*

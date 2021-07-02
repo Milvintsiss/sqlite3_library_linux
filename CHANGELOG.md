@@ -1,4 +1,4 @@
-## [2.1.0] - 2021/06/27
+## [2.1.0] - 2021/07/02
 
 * Fixed null safety issue
 * Added an example
