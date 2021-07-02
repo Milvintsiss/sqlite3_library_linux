@@ -3,25 +3,24 @@ library sqlite3_library_linux;
 import 'dart:ffi' show DynamicLibrary;
 import 'dart:io' show File, Platform;
 
-///relative path to default SQLite3 library file
-const default_sqlite3_linux_libraryPath =
+/// Relative path to default SQLite3 library file
+const defaultSQLite3LinuxLibraryPath =
     '/data/flutter_assets/packages/sqlite3_library_linux/default_libsqlite3.so';
 
-///relative path to old SQLite3 library file
-const old_sqlite3_linux_libraryPath =
+/// Relative path to old SQLite3 library file
+const oldSQLite3LinuxLibraryPath =
     '/data/flutter_assets/packages/sqlite3_library_linux/old_libsqlite3.so';
 
-///This function open SQLite3 in memory and return the associated DynamicLibrary.
-///Return null if app fail to open SQLite3.
-DynamicLibrary? openSQLiteOnLinux() {
-  DynamicLibrary? library;
+/// This function open SQLite3 in memory and return the associated DynamicLibrary.
+DynamicLibrary openSQLiteOnLinux() {
+  late DynamicLibrary library;
 
   String executableDirectoryPath =
       File(Platform.resolvedExecutable).parent.path;
   print('executableDirectoryPath: $executableDirectoryPath');
   try {
     String sqliteLibraryPath =
-        executableDirectoryPath + default_sqlite3_linux_libraryPath;
+        executableDirectoryPath + defaultSQLite3LinuxLibraryPath;
     print('SQLite3LibraryPath: $sqliteLibraryPath');
 
     library = DynamicLibrary.open(sqliteLibraryPath);
@@ -34,7 +33,7 @@ DynamicLibrary? openSQLiteOnLinux() {
       print(_red("Failed to load SQLite3, "
           "trying to load an old version of SQLite3..."));
       String sqliteLibraryPath =
-          executableDirectoryPath + old_sqlite3_linux_libraryPath;
+          executableDirectoryPath + oldSQLite3LinuxLibraryPath;
       print('SQLite3LibraryPath: $sqliteLibraryPath');
 
       library = DynamicLibrary.open(sqliteLibraryPath);
