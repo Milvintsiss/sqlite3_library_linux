@@ -1,3 +1,4 @@
+/// Flutter package to bundle sqlite3 library to your linux apps
 library sqlite3_library_linux;
 
 import 'dart:ffi' show DynamicLibrary;
