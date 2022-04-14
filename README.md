@@ -1,4 +1,13 @@
-[![pub package](https://img.shields.io/pub/v/sqlite3_library_linux)](https://pub.dev/packages/camera)
+[![pub package](https://img.shields.io/pub/v/sqlite3_library_linux)](https://pub.dev/packages/sqlite3_library_linux)
+
+# This package is no longer maintained.
+
+### This package was created to provide a simple way to bundle sqlite3 with your apps on Linux as [sqlite3_flutter_libs](https://pub.dev/packages/sqlite3_flutter_libs) didn't provide support for this platform. This is no longer the case so I recommend the use of [sqlite3_flutter_libs](https://pub.dev/packages/sqlite3_flutter_libs). Thanks to [Simolus](https://github.com/simolus3) for this update!
+
+
+
+
+
 # SQLite3 library for linux
 
 This package help you bundle SQLite3 library to your apps.

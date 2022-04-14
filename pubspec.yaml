@@ -1,6 +1,6 @@
 name: sqlite3_library_linux
 description: Flutter package to bundle sqlite3 library to your linux apps
-version: 2.1.0+1
+version: 2.1.0+2
 repository: https://github.com/Milvintsiss/sqlite3_library_linux
 homepage: https://github.com/Milvintsiss/sqlite3_library_linux
 issue_tracker: https://github.com/Milvintsiss/sqlite3_library_windows/issues
